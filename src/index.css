@@ -1,0 +1,19 @@
+@import "keep-react/css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .siderbar {
+    margin-left: -100vw;
+    transition: 0.2s;
+  }
+  .siderbarVisibale {
+    margin-left: 0px;
+    transition: 0.2s;
+  }
+
+  .disableScrollBar::-webkit-scrollbar {
+    height: 0px;
+  }
+}
