@@ -3,7 +3,7 @@ import Layout from "../components/layout/Layout";
 
 const Cart = () => {
   return (
-    <Layout>
+    <Layout title={"my cart"} description={"cart"}>
       <div>Cart</div>
     </Layout>
   );

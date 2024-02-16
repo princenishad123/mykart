@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 const BrowseByCategory = () => {
   return (
-    <div className="w-full   h-auto py-4 bg-white">
-      <div className="w-4/5 max-md:w-11/12 mx-auto bg-gray-100 h-44 py-2 mt-12 max-md:mt-4 max-md:px-2 px-12 flex items-center justify-between rounded-md ">
+    <div data-aos="zoom-in" className="w-full   h-auto py-4 bg-white">
+      <div className="w-11/12 max-md:w-11/12 mx-auto bg-gray-100 h-44 py-2 mt-12 max-md:mt-4 max-md:px-2 px-12 flex items-center justify-between rounded-md ">
         <div className="">
           <h1 className="text-3xl max-md:text-2xl max-sm:text-xl my-2 font-semibold">
             Enhance Your <br /> Shopping Experience

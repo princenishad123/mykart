@@ -33,9 +33,11 @@ const Navbar = () => {
           >
             {sidebarHander ? <RxCross2 /> : <HiMiniBars3 />}
           </button>
-          <button className="text-2xl max-md:text-xl font-semibold">
+         <NavLink to={"/"}>
+         <button className="text-2xl max-md:text-xl font-semibold">
             E-Shop
           </button>
+         </NavLink>
         </div>
 
         {/* this is search part */}
@@ -73,9 +75,16 @@ const Navbar = () => {
                 dismissOnClick={true}
                 className="w-12 h-12"
               >
-                <Dropdown.Item>Sing Up</Dropdown.Item>
-                <Dropdown.Item>Login</Dropdown.Item>
-                <Dropdown.Item>Account</Dropdown.Item>
+                <NavLink to={"/sign-up"}>
+                  <Dropdown.Item>Sing Up</Dropdown.Item>
+                </NavLink>
+                <NavLink to={"/login"}>
+                  <Dropdown.Item>Login</Dropdown.Item>
+                </NavLink>
+
+                <NavLink to={"/account"}>
+                  <Dropdown.Item>Account</Dropdown.Item>
+                </NavLink>
                 <Dropdown.Item>Log out</Dropdown.Item>
               </Dropdown>
             </li>

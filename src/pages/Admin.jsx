@@ -3,7 +3,7 @@ import Layout from "../components/layout/Layout";
 
 const Admin = () => {
   return (
-    <Layout>
+    <Layout title={"E-shop | Admin"} description={"admin"}>
       <h1>Admin</h1>
     </Layout>
   );

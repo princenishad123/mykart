@@ -13,7 +13,7 @@ const Searchbar = () => {
     <div className="">
       <form
         onSubmit={HandelSearch}
-        className="flex w-96 max-lg:w-64 max-md:w-96 px-2 rounded-md items-center bg-gray-100 border"
+        className="flex w-96 max-lg:w-64 max-md:w-96 px-2 rounded-md items-center bg-gray-100 border justify-center"
       >
         <input
           type="search"
@@ -22,7 +22,7 @@ const Searchbar = () => {
           className=" w-full py-1 outline-none bg-transparent"
         />
         <Link to={`/search?q=${query}`}>
-          <button type="submit" className="text-xl text-gray-500">
+          <button type="submit" className="text-xl text-gray-400 mt-1">
             <IoIosSearch />
           </button>
         </Link>

@@ -49,14 +49,6 @@ const SidebarComponent = () => {
           Categories
         </li>
       </NavLink>
-      <NavLink to={"/all-products"}>
-        <li className="py-1 px-2 my-3 hover:bg-blue-100 rounded-md flex items-center gap-4">
-          <span className="text-2xl">
-            <MdProductionQuantityLimits />
-          </span>
-          All product
-        </li>
-      </NavLink>
 
       <NavLink to={"/coupons"}>
         <li className="py-1 px-2 my-3 hover:bg-blue-100 rounded-md flex items-center gap-4">

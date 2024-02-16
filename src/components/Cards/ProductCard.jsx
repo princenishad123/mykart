@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import Rating from "@mui/material/Rating";
+import { NavLink } from "react-router-dom";
 
-const ProductCard = ({ image, title, discount }) => {
-  const [value, setValue] = useState(2);
+const ProductCard = ({ image, title, discount, category }) => {
   return (
-    <div className="w-48  max-md:w-36 h-64 bg-gray-100 border flex flex-col items-center justify-center">
-      <div className="w-44 overflow-hidden max-md:w-36 relative h-44 max-md:h-36 ">
-        <img src={image} className="" alt="" />
+    <NavLink to={`products/${category}`}>
+      <div
+        data-aos="zoom-in"
+        className="w-48 rounded-md  max-md:w-36 h-64 bg-white border flex flex-col items-center justify-center"
+      >
+        <div className="w-44 overflow-hidden max-md:w-36 relative h-44 max-md:h-36 grid place-items-center">
+          <img
+            src={image}
+            className="object-scale-down w-28  max-md:w-28"
+            alt=""
+          />
+        </div>
+        <div className="w-full p-2">
+          <span className="font-semibold text-md text-green-500">
+            {discount}% OFF
+          </span>
+          <h2>{title}</h2>
+        </div>
       </div>
-      <div className="w-full p-2">
-        <span className="text-sm">{discount}% OFF</span>
-        <h2>{title}</h2>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-      </div>
-    </div>
+    </NavLink>
   );
 };
 
