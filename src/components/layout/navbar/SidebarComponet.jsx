@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import { RiAdminLine } from "react-icons/ri";
@@ -12,6 +12,8 @@ import { CiPhone } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 
 const SidebarComponent = () => {
+  const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+
   return (
     <ul className="p-4 text-gray-700">
       <NavLink to={"/account"}>
@@ -25,14 +27,18 @@ const SidebarComponent = () => {
           Account
         </li>
       </NavLink>
-      <NavLink to={"/owner/admin"}>
-        <li className="py-1 px-2 my-3 hover:bg-blue-100 rounded-md flex items-center gap-4">
-          <span className="text-2xl">
-            <RiAdminLine />
-          </span>
-          Admin
-        </li>
-      </NavLink>
+
+      {isLoggedIn?.email == import.meta.env.VITE_ADMIN_EMAIL ? (
+        <NavLink to={"/owner/admin"}>
+          <li className="py-1 px-2 my-3 hover:bg-blue-100 rounded-md flex items-center gap-4">
+            <span className="text-2xl">
+              <RiAdminLine />
+            </span>
+            Admin
+          </li>
+        </NavLink>
+      ) : null}
+
       <NavLink to={"/order"}>
         <li className="py-1 px-2 my-3 hover:bg-blue-100 rounded-md flex items-center gap-4">
           <span className="text-2xl">

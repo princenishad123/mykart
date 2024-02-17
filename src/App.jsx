@@ -25,6 +25,9 @@ import Address from "./pages/userPages/Address";
 import WatchList from "./pages/userPages/WatchList";
 import Notifications from "./pages/userPages/Notifications";
 import "aos/dist/aos.css";
+import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoutes from "./pages/protectedRoutes/ProtectedRoutes";
+import ProtectedRouteForAdmin from "./pages/protectedRoutes/ProtectedRouteForAdmin";
 
 const App = () => {
   AOS.init({
@@ -33,16 +36,22 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/owner/admin" element={<Admin />} />
+      <Route
+        path="/owner/admin"
+        element={<ProtectedRouteForAdmin AdminProtected={Admin} />}
+      />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/order" element={<Order />} />
+      <Route path="/order" element={<ProtectedRoutes Component={Order} />} />
       <Route path="/search" element={<Search />} />
 
       {/* <Route path="/account" element={<Account />} /> */}
-      <Route path="/account/" element={<Account />}>
-        <Route path="" element={<UserInfo />} />
-        <Route path="address" element={<Address />} />
+      <Route path="/account/" element={<ProtectedRoutes Component={Account} />}>
+        <Route path="" element={<ProtectedRoutes Component={UserInfo} />} />
+        <Route
+          path="address"
+          element={<ProtectedRoutes Component={Address} />}
+        />
         <Route path="watchlist" element={<WatchList />} />
         <Route path="notification" element={<Notifications />} />
       </Route>
@@ -51,7 +60,7 @@ const App = () => {
       <Route path="/view/:id" element={<View />} />
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/offer-zone" element={<Offers />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={<ProtectedRoutes Component={Cart} />} />
       <Route path="/help" element={<HelpCenter />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/*" element={<NoPage />} />

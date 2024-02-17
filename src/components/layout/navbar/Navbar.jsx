@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { CiLight } from "react-icons/ci";
 import { PiUserCircleLight } from "react-icons/pi";
@@ -8,9 +8,12 @@ import { HiMiniBars3 } from "react-icons/hi2";
 import SidebarComponent from "./SidebarComponet";
 import { RxCross2 } from "react-icons/rx";
 import { Dropdown } from "keep-react";
+import services from "../../../firebase/service";
 
 const Navbar = () => {
   const [sidebarHander, setSidebarHander] = useState(false);
+  const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+
   const handleSidebar = (e) => {
     e.stopPropagation();
     if (sidebarHander == true) {
@@ -22,6 +25,15 @@ const Navbar = () => {
       <PiUserCircleLight />
     </div>
   );
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    services.logOut().then((res) => {
+      console.log(res);
+    });
+    navigate("/");
+  };
   return (
     <nav className="w-full  z-30 bg-white sticky top-0">
       {/* this is logo part */}
@@ -33,11 +45,11 @@ const Navbar = () => {
           >
             {sidebarHander ? <RxCross2 /> : <HiMiniBars3 />}
           </button>
-         <NavLink to={"/"}>
-         <button className="text-2xl max-md:text-xl font-semibold">
-            E-Shop
-          </button>
-         </NavLink>
+          <NavLink to={"/"}>
+            <button className="text-2xl max-md:text-xl font-semibold">
+              E-Shop
+            </button>
+          </NavLink>
         </div>
 
         {/* this is search part */}
@@ -60,11 +72,14 @@ const Navbar = () => {
                 Orders
               </li>
             </NavLink>
-            <NavLink to={"/owner/admin"}>
-              <li className="inline-block max-md:hidden px-1 mx-2 max-sm:mx-0 uppercase font-semibold text-sm">
-                Admin
-              </li>
-            </NavLink>
+
+            {isLoggedIn?.email === import.meta.env.VITE_ADMIN_EMAIL ? (
+              <NavLink to={"/owner/admin"}>
+                <li className="inline-block max-md:hidden px-1 mx-2 max-sm:mx-0 uppercase font-semibold text-sm">
+                  Admin
+                </li>
+              </NavLink>
+            ) : null}
 
             <li className="inline-block px-1  max-sm:mx-0 uppercase font-semibold text-sm  overflow-hidden">
               <Dropdown
@@ -75,17 +90,27 @@ const Navbar = () => {
                 dismissOnClick={true}
                 className="w-12 h-12"
               >
-                <NavLink to={"/sign-up"}>
-                  <Dropdown.Item>Sing Up</Dropdown.Item>
-                </NavLink>
-                <NavLink to={"/login"}>
-                  <Dropdown.Item>Login</Dropdown.Item>
-                </NavLink>
+                {isLoggedIn ? null : (
+                  <NavLink to={"/sign-up"}>
+                    <Dropdown.Item>Sing Up</Dropdown.Item>
+                  </NavLink>
+                )}
 
-                <NavLink to={"/account"}>
-                  <Dropdown.Item>Account</Dropdown.Item>
-                </NavLink>
-                <Dropdown.Item>Log out</Dropdown.Item>
+                {isLoggedIn ? null : (
+                  <NavLink to={"/login"}>
+                    <Dropdown.Item>Login</Dropdown.Item>
+                  </NavLink>
+                )}
+
+                {isLoggedIn ? (
+                  <NavLink to={"/account"}>
+                    <Dropdown.Item>Account</Dropdown.Item>
+                  </NavLink>
+                ) : null}
+
+                {isLoggedIn ? (
+                  <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
+                ) : null}
               </Dropdown>
             </li>
             {/* 

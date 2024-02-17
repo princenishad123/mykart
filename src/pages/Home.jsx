@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
+import { ToastContainer, toast } from "react-toastify";
+
 import CotegoriesMenu from "../components/Category/CotegoriesMenu";
 import MainPage from "../components/HomeSlider/MainPage";
 import BrowseByCategory from "../components/HomeSlider/BrowseByCategory";
@@ -10,8 +12,11 @@ import Loader from "../components/Loader/Loader";
 import MyContext from "../context/MyContext";
 
 const Home = () => {
+  const userid = JSON.parse(localStorage.getItem("user"));
+  const [userUid, setUserUid] = useState(userid?.uid);
   let [item, setItem] = useState([]);
-  const { loaderOval, setLoaderOval } = useContext(MyContext);
+  const { loaderOval, setLoaderOval, userInformation, setUserInformation } =
+    useContext(MyContext);
 
   useEffect(() => {
     services.homeData().then((res) => {
@@ -21,6 +26,10 @@ const Home = () => {
       });
       setLoaderOval(false);
       setItem(data);
+    });
+    services.getLoggedInUser();
+    services.getUserData(userUid).then((res) => {
+      setUserInformation(res);
     });
   }, []);
 

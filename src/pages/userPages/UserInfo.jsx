@@ -1,19 +1,49 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Order from "../../assets/received.png";
 import Exchange from "../../assets/exchange.png";
+import MyContext from "../../context/MyContext";
 
 const UserInfo = () => {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const { userInformation, setUserInformation } = useContext(MyContext);
+
+  // get date function
+  function getDate(timestamp) {
+    const date = new Date(timestamp);
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+      timeZoneName: "short",
+    };
+    return date.toLocaleDateString("en-US", options);
+  }
+  // console.log(getDate(1708086388207));
   return (
     <div>
       {" "}
       <div className="w-full h-40 max-sm:h-32 flex items-center px-14 max-md:px-4 gap-8 max-sm:gap-2 max-sm:flex-col max-md:justify-center">
-        <div className="w-28   h-28 max-md:w-20 max-md:h-20 max-sm:w-16 max-sm:h-16 rounded-full border overflow-hidden shadow-xl shadow-gray-100">
-          <img src="" alt="user image" />
+        <div
+          className={`w-28 grid place-content-center  h-28 max-md:w-20 max-md:h-20 max-sm:w-16 max-sm:h-16 rounded-full border overflow-hidden shadow-xl shadow-gray-100 ${
+            userInformation?.imageUrl ? "" : "bg-red-400 "
+          } `}
+        >
+          {userInformation?.imageUrl ? (
+            <img src="" alt="user image" />
+          ) : (
+            <h2 className="text-6xl text-white max-md:text-2xl">
+              {userInformation?.username[0]}
+            </h2>
+          )}
         </div>
 
         <div className="max-sm:w-11/12 max-sm:text-center">
-          <h2 className="text-xl">Prince Nishad</h2>
-          <span className="text-gray-500">Uttar Pradesh</span>
+          <h2 className="text-xl">{userInformation?.username}</h2>
+          <span className="text-gray-500">{userInformation?.state}</span>
         </div>
       </div>
       {/* orders status and more */}
@@ -36,36 +66,34 @@ const UserInfo = () => {
         </div>
       </div>
       {/* user personal Info */}
-      <div className="w-full  h-auto my-4 px-4">
-        <form className="w-2/3 flex flex-wrap gap-4 max-md:justify-center">
+      <div className="w-full  h-auto my-4 px-4 text-gray-700">
+        <form className="w-2/3 max-sm:w-full flex flex-wrap gap-4 max-md:justify-center">
           <div className="max-sm:w-11/12">
             <span className="text-gray-500">Full Name</span> <br />
             <input
               type="text"
-              className="py-1 px-2 outline-none bg-slate-100 border max-sm:w-full rounded"
+              defaultValue={userInformation?.username}
+              className="py-1 px-2 outline-none w-72 bg-slate-100 border max-sm:w-full rounded"
             />
           </div>
           <div className="max-sm:w-11/12">
             <span className="text-gray-500">Phone</span> <br />
             <input
               type="text"
-              className="py-1 px-2 outline-none bg-slate-100 max-sm:w-full border rounded"
+              defaultValue={userInformation?.phone}
+              className="py-1 px-2 outline-none w-72 bg-slate-100 max-sm:w-full border rounded"
             />
           </div>
           <div className="max-sm:w-11/12">
             <span className="text-gray-500">Email</span> <br />
             <input
               type="text"
-              className="py-1 px-2 outline-none bg-slate-100 max-sm:w-full border rounded"
+              defaultValue={userInformation?.email}
+              readOnly
+              className="py-1 px-2 outline-none w-72 bg-slate-100 max-sm:w-full border rounded"
             />
           </div>
-          <div className="max-sm:w-11/12">
-            <span className="text-gray-500">State</span> <br />
-            <input
-              type="text"
-              className="py-1 px-2 outline-none bg-slate-100 max-sm:w-full border rounded"
-            />
-          </div>
+
           <div className="max-sm:w-11/12">
             <button
               type="submit"

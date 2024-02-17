@@ -1,4 +1,9 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { database, auth } from "./InitializeFirebase";
 import {
   collection,
@@ -11,21 +16,15 @@ import {
   getDocs,
   where,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
+import { stringify } from "uuid";
 
 class service {
   async uploadDocs() {
     try {
       await setDoc(doc(database, "products", "9999"), {
         title: "boAt BassHeads",
-        description:
-          "Sennheiser ACCENTUM Plus Wireless Bluetooth Headphones Audio with Quick-Charge Feature, 50-Hour Battery Playtime, Adaptive Hybrid ANC, Sound Personalization and 2 Yr Warranty-",
-        id: "9999",
-        price: 349,
-        subprice: 549,
-        image: "https://m.media-amazon.com/images/I/719elVA3FvL._AC_UY218_.jpg",
-        keyword: ["t shirt", "mens T-shirt", "new shirt"],
-        discount: 32,
       });
       return "success";
     } catch (error) {
@@ -33,14 +32,94 @@ class service {
     }
   }
 
-  async signUp() {
+  // sign up  user
+  async signUp({ name, email, password }) {
     try {
-      let users = await createUserWithEmailAndPassword(
-        auth,
-        "princenishad32@gmail.com",
-        "123456"
-      );
+      let users = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(database, "users", users.user.uid), {
+        username: name,
+        email: email,
+        userId: users.user.uid,
+        name: "",
+        phone: "",
+        alternatePhone: "",
+        state: "",
+        city: "",
+        postOffice: "",
+        office_house_no: "",
+        village_landmark: "",
+      });
       return users;
+    } catch (error) {
+      return error.code;
+    }
+  }
+  //Login user
+  login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+  // get signed-in user
+  async getLoggedInUser() {
+    try {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          localStorage.setItem("user", JSON.stringify(user));
+          return user;
+        } else {
+          localStorage.clear();
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  // logOut
+  async logOut() {
+    let data = await signOut(auth);
+    return data;
+  }
+
+  // get user data
+  async getUserData(id) {
+    try {
+      const userid = doc(database, "users", id);
+      const docSnap = await getDoc(userid);
+      if (docSnap.exists()) {
+        return docSnap.data();
+      } else {
+        return "No such as document";
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  // set sipping address
+  async updateUserAddress(
+    id,
+    {
+      name,
+      phone,
+      alternatePhone,
+      state,
+      city,
+      postOffice,
+      office_house_no,
+      village_landmark,
+    }
+  ) {
+    try {
+      await updateDoc(doc(database, "users", id), {
+        name: name,
+        phone: phone,
+        alternatePhone: alternatePhone,
+        state: state,
+        city: city,
+        postOffice: postOffice,
+        office_house_no: office_house_no,
+        village_landmark: village_landmark,
+      });
+      return "success";
     } catch (error) {
       return error.code;
     }
@@ -59,7 +138,6 @@ class service {
       console.log(error.message);
     }
   }
-
   // get categories data from farebase
   async cotegoryData(category) {
     try {
