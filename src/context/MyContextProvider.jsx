@@ -6,6 +6,37 @@ const MyContextProvider = ({ children }) => {
   const [searchItem, setSearchItem] = useState();
   const [loaderOval, setLoaderOval] = useState(true);
   const [userInformation, setUserInformation] = useState();
+  const [allUsers, setAllUsers] = useState([]);
+  const useEmail = JSON.parse(localStorage.getItem("user"));
+  const [allProducts, setAllProducts] = useState([]);
+
+  // get all users fot admin
+  const getuserData = () => {
+    services.getDataForDb("users").then((res) => {
+      const data = [];
+      res.forEach((doc) => {
+        data.push(doc.data());
+      });
+      setAllUsers(data);
+    });
+  };
+  //get all products for admin
+  const getAllProducts = () => {
+    services.getDataForDb("products").then((res) => {
+      const productsData = [];
+      res.forEach((doc) => {
+        productsData.push(doc.data());
+      });
+      setAllProducts(productsData);
+    });
+  };
+
+  useEffect(() => {
+    if (useEmail?.email == import.meta.env.VITE_ADMIN_EMAIL) {
+      getuserData();
+      getAllProducts();
+    }
+  }, []);
 
   return (
     <MyContext.Provider
@@ -16,6 +47,10 @@ const MyContextProvider = ({ children }) => {
         setLoaderOval,
         userInformation,
         setUserInformation,
+        allUsers,
+        setAllUsers,
+        allProducts,
+        setAllProducts,
       }}
     >
       {children}

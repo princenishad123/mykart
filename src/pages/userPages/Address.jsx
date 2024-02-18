@@ -54,9 +54,9 @@ const Address = () => {
       <h2 className="text-xl font-semibold">Shipping Address</h2>
       <div>
         <form onSubmit={handleForm}>
-          <div className="my-6 flex flex-wrap gap-4 items-center">
-            <div className="">
-              <span>Full Name</span>
+          <div className="my-6  flex flex-wrap gap-4 items-center">
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Full Name</span>
               <br />
               <input
                 type="text"
@@ -69,11 +69,11 @@ const Address = () => {
                   })
                 }
                 placeholder="Full Name"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md "
               />
             </div>
-            <div className="">
-              <span>Phone</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Phone</span>
               <br />
               <input
                 type="text"
@@ -86,11 +86,11 @@ const Address = () => {
                   })
                 }
                 placeholder="Phone"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>Alternate Number</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Alternate Number</span>
               <br />
               <input
                 type="text"
@@ -103,11 +103,11 @@ const Address = () => {
                   })
                 }
                 placeholder="Phone"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>State</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">State</span>
               <br />
               <input
                 type="text"
@@ -120,11 +120,11 @@ const Address = () => {
                   })
                 }
                 placeholder="State"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>City</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">City</span>
               <br />
               <input
                 type="text"
@@ -137,11 +137,11 @@ const Address = () => {
                   })
                 }
                 placeholder="City"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>Post Office</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Post Office</span>
               <br />
               <input
                 type="text"
@@ -154,11 +154,11 @@ const Address = () => {
                   })
                 }
                 placeholder="Post Office"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>Office/House No.</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Office/House No.</span>
               <br />
               <input
                 type="text"
@@ -171,11 +171,11 @@ const Address = () => {
                   })
                 }
                 placeholder="000"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
-            <div className="">
-              <span>Village/Road No/Landmark.</span>
+            <div className="max-sm:w-full">
+              <span className="text-gray-700">Village/Road No/Landmark.</span>
               <br />
               <input
                 type="text"
@@ -188,7 +188,7 @@ const Address = () => {
                   })
                 }
                 placeholder="Village"
-                className="py-1 px-2 outline-none text-gray-600 border bg-slate-50 rounded-md"
+                className="py-2 px-2 outline-none text-gray-600 max-sm:w-full border bg-slate-50 rounded-md"
               />
             </div>
           </div>

@@ -79,7 +79,7 @@ class service {
     return data;
   }
 
-  // get user data
+  // get user data by id
   async getUserData(id) {
     try {
       const userid = doc(database, "users", id);
@@ -91,6 +91,16 @@ class service {
       }
     } catch (error) {
       console.log(error.message);
+    }
+  }
+  //get all users and products
+  async getDataForDb(col) {
+    try {
+      const data = await getDocs(collection(database, col));
+
+      return data;
+    } catch (error) {
+      console.log(error);
     }
   }
 

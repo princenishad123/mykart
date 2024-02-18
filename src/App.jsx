@@ -27,7 +27,12 @@ import Notifications from "./pages/userPages/Notifications";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoutes from "./pages/protectedRoutes/ProtectedRoutes";
+//admin Pages
 import ProtectedRouteForAdmin from "./pages/protectedRoutes/ProtectedRouteForAdmin";
+import Dashboard from "./pages/AdminPages/Dashboard";
+import Users from "./pages/AdminPages/Users";
+import Products from "./pages/AdminPages/Products";
+import Orders from "./pages/AdminPages/Orders";
 
 const App = () => {
   AOS.init({
@@ -37,9 +42,17 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
-        path="/owner/admin"
+        path="/owner/admin/"
         element={<ProtectedRouteForAdmin AdminProtected={Admin} />}
-      />
+      >
+        <Route path="" element={<ProtectedRoutes Component={Dashboard} />} />
+        <Route path="users" element={<ProtectedRoutes Component={Users} />} />
+        <Route
+          path="products"
+          element={<ProtectedRoutes Component={Products} />}
+        />
+        <Route path="orders" element={<ProtectedRoutes Component={Orders} />} />
+      </Route>
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/order" element={<ProtectedRoutes Component={Order} />} />

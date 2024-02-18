@@ -69,7 +69,7 @@ const View = () => {
                   />
                 </div>
                 {/* buttons for mobile  */}
-                <div className="flex items-center justify-center flex-wrap gap-6 my-6 md:hidden">
+                <div className="flex items-center justify-start flex-wrap gap-5 my-6 md:hidden">
                   <button className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 ">
                     Add to cart
                   </button>

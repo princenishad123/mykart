@@ -109,6 +109,18 @@ const Navbar = () => {
                 ) : null}
 
                 {isLoggedIn ? (
+                  <NavLink to={"/account/address"} className={"md:hidden"}>
+                    <Dropdown.Item>Address</Dropdown.Item>
+                  </NavLink>
+                ) : null}
+
+                {isLoggedIn ? (
+                  <NavLink to={"/account/watchlist"} className={"md:hidden"}>
+                    <Dropdown.Item>Watchlist</Dropdown.Item>
+                  </NavLink>
+                ) : null}
+
+                {isLoggedIn ? (
                   <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
                 ) : null}
               </Dropdown>
