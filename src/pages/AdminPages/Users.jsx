@@ -25,7 +25,7 @@ const Users = () => {
           <tbody className="text-start text-gray-500">
             {allUsers.map((e) => (
               <tr
-                key={e.uid}
+                key={e.userId}
                 className="border-b cursor-pointer hover:bg-slate-50"
               >
                 <td className="">

@@ -11,7 +11,7 @@ import MyContext from "../../context/MyContext";
 const Dashboard = () => {
   const { allUsers, setAllUsers } = useContext(MyContext);
   const { allProducts, setAllProducts } = useContext(MyContext);
-  console.log(allUsers);
+
   return (
     <div>
       <h1 className="text-xl font-semibold">Dashboard</h1>

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
-import UploadModal from "../../components/AdminComponents/UplaodModal";
 
 const Products = () => {
   const { allProducts, setAllProducts } = useContext(MyContext);
@@ -41,7 +40,7 @@ const Products = () => {
             </div>
           </div>
           <div>
-            <UploadModal />
+            <button>Upload Products</button>
           </div>
         </div>
         <table className="table-fixed text-sm w-full max-lg:w-screen">
@@ -50,9 +49,9 @@ const Products = () => {
               <th className="text-start px-3 py-2 w-16">Image</th>
               <th className="text-start px-3  py-2">Id</th>
               <th className="text-start px-3 py-2">Name</th>
-              <th className="text-start px-3 py-2">Price</th>
-              <th className="text-start px-3 py-2">Price</th>
-              <th className="text-start px-3 py-2">action</th>
+              <th className="text-start px-3 w-28 py-2">Price</th>
+              <th className="text-start px-3 w-28 py-2">Price</th>
+              <th className="text-start px-3 w-32  py-2">action</th>
             </tr>
           </thead>
 
@@ -71,9 +70,10 @@ const Products = () => {
                 <td className=" py-2 px-3 truncate capitalize">{e.title}</td>
                 <td className=" py-2 px-3 truncate">₹ {e.price}</td>
                 <td className=" py-2 px-3 truncate">1961</td>
-                <td className=" py-2 px-3 truncate">
+                <td className=" py-2 px-3 w-32 truncate">
                   <button>Delete</button>
-                  <button>Update</button>
+
+                  {/* <UpdateProduct id={e.id} /> */}
                 </td>
               </tr>
             ))}

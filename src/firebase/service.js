@@ -18,17 +18,34 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
-import { stringify } from "uuid";
+
+import { v4 as uuidv4 } from "uuid";
 
 class service {
-  async uploadDocs() {
+  async uploadDocs({
+    title,
+    category,
+    image,
+    price,
+    discount,
+    keyword,
+    description,
+  }) {
+    let id = uuidv4();
     try {
-      await setDoc(doc(database, "products", "9999"), {
-        title: "boAt BassHeads",
+      await setDoc(doc(database, "products", id), {
+        id: id,
+        title: title,
+        category: category,
+        image: image,
+        price: price,
+        discount: discount,
+        keyword: keyword,
+        description: description,
       });
       return "success";
     } catch (error) {
-      console.log(error);
+      return error.code;
     }
   }
 
