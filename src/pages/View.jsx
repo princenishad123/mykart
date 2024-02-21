@@ -6,10 +6,13 @@ import services from "../firebase/service";
 import SaleCard from "../components/Cards/SaleCard";
 import MyContext from "../context/MyContext";
 import Loader from "../components/Loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../store/CartSlice";
+import { toast } from "react-toastify";
 
 const View = () => {
   const { id } = useParams();
-
+  const dispatch = useDispatch();
   const { loaderOval, setLoaderOval } = useContext(MyContext);
   const [value, setValue] = useState(4);
   const [category, setCategory] = useState();
@@ -34,6 +37,15 @@ const View = () => {
     });
   }, [id]);
 
+  const cartItems = useSelector((state) => state.cart);
+
+  const addToCart = (product) => {
+    dispatch(add(product));
+    toast.success("Added in Cart");
+  };
+  useEffect(() => {
+    // localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
   return (
     <Layout title={category} description={"indias most popular shopping site"}>
       {loaderOval ? (
@@ -70,7 +82,10 @@ const View = () => {
                 </div>
                 {/* buttons for mobile  */}
                 <div className="flex items-center justify-start flex-wrap gap-5 my-6 md:hidden">
-                  <button className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 ">
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
+                  >
                     Add to cart
                   </button>
                   <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
@@ -91,7 +106,10 @@ const View = () => {
                 {/*buttons for md screens */}
 
                 <div className="flex items-center gap-6 my-6 max-md:hidden">
-                  <button className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 ">
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
+                  >
                     Add to cart
                   </button>
                   <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">

@@ -17,6 +17,7 @@ import {
   where,
   getDoc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 import { v4 as uuidv4 } from "uuid";
@@ -43,10 +44,16 @@ class service {
         keyword: keyword,
         description: description,
       });
-      return "success";
+      return "Products Uploaded";
     } catch (error) {
       return error.code;
     }
+  }
+
+  //delete doc
+  async deleteDoc(id) {
+    let res = await deleteDoc(doc(database, "products", id));
+    return res;
   }
 
   // sign up  user
@@ -107,7 +114,7 @@ class service {
         return "No such as document";
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.code);
     }
   }
   //get all users and products

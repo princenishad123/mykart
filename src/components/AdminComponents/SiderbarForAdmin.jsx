@@ -35,6 +35,11 @@ const SidebarForAdmin = () => {
           <AiOutlineShopping /> Products
         </li>
       </NavLink>
+      <NavLink to={"upload"}>
+        <li className="my-1 flex items-center py-1 px-3 hover:bg-red-100 rounded-md gap-3">
+          <AiOutlineShopping /> Uplaod
+        </li>
+      </NavLink>
 
       {/* <NavLink to={"Contegories"}> */}
       <li className="my-1 flex items-center py-1 px-3 hover:bg-red-100 rounded-md gap-3">

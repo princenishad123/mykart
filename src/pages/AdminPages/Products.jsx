@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import MyContext from "../../context/MyContext";
+import { NavLink } from "react-router-dom";
+import DeleteConfirmation from "../../components/AdminComponents/DeleteConfirmation";
+import { CiEdit } from "react-icons/ci";
 
 const Products = () => {
   const { allProducts, setAllProducts } = useContext(MyContext);
+
   return (
     <div>
       <div
@@ -40,7 +44,9 @@ const Products = () => {
             </div>
           </div>
           <div>
-            <button>Upload Products</button>
+            <NavLink to={"/owner/admin/upload"}>
+              <button>Upload Products</button>
+            </NavLink>
           </div>
         </div>
         <table className="table-fixed text-sm w-full max-lg:w-screen">
@@ -70,8 +76,13 @@ const Products = () => {
                 <td className=" py-2 px-3 truncate capitalize">{e.title}</td>
                 <td className=" py-2 px-3 truncate">₹ {e.price}</td>
                 <td className=" py-2 px-3 truncate">1961</td>
-                <td className=" py-2 px-3 w-32 truncate">
-                  <button>Delete</button>
+                <td className=" py-2 px-3 w-32 truncate flex items-center gap-2">
+                  <DeleteConfirmation id={e.id} />
+                  <NavLink to={""}>
+                    <button className="h-8 grid place-items-center text-xl w-8 bg-green-100 text-green-600 rounded-md">
+                      <CiEdit />
+                    </button>
+                  </NavLink>
 
                   {/* <UpdateProduct id={e.id} /> */}
                 </td>

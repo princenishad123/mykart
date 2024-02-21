@@ -33,6 +33,8 @@ import Dashboard from "./pages/AdminPages/Dashboard";
 import Users from "./pages/AdminPages/Users";
 import Products from "./pages/AdminPages/Products";
 import Orders from "./pages/AdminPages/Orders";
+import Upload from "./pages/AdminPages/Upload";
+import Update from "./pages/AdminPages/Update";
 
 const App = () => {
   AOS.init({
@@ -41,6 +43,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      // routes for admin Dashbaord
       <Route
         path="/owner/admin/"
         element={<ProtectedRouteForAdmin AdminProtected={Admin} />}
@@ -52,12 +55,13 @@ const App = () => {
           element={<ProtectedRoutes Component={Products} />}
         />
         <Route path="orders" element={<ProtectedRoutes Component={Orders} />} />
+        <Route path="upload" element={<ProtectedRoutes Component={Upload} />} />
+        <Route path="update" element={<ProtectedRoutes Component={Update} />} />
       </Route>
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/order" element={<ProtectedRoutes Component={Order} />} />
       <Route path="/search" element={<Search />} />
-
       {/* <Route path="/account" element={<Account />} /> */}
       <Route path="/account/" element={<ProtectedRoutes Component={Account} />}>
         <Route path="" element={<ProtectedRoutes Component={UserInfo} />} />
@@ -68,7 +72,6 @@ const App = () => {
         <Route path="watchlist" element={<WatchList />} />
         <Route path="notification" element={<Notifications />} />
       </Route>
-
       <Route path="/products/:category" element={<AllProduct />} />
       <Route path="/view/:id" element={<View />} />
       <Route path="/coupons" element={<Coupons />} />

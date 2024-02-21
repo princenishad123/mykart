@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 import { Helmet } from "react-helmet";
+import { ToastContainer } from "react-toastify";
 
 const Layout = ({
   children,
@@ -19,6 +20,7 @@ const Layout = ({
         <meta name="author" content={author} />
       </Helmet>
       <Navbar />
+      <ToastContainer />
       <main className="w-full bg-white" style={{ minHeight: "80vh" }}>
         {children}
       </main>

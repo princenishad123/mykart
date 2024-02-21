@@ -9,10 +9,12 @@ import SidebarComponent from "./SidebarComponet";
 import { RxCross2 } from "react-icons/rx";
 import { Dropdown } from "keep-react";
 import services from "../../../firebase/service";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [sidebarHander, setSidebarHander] = useState(false);
   const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+  const cartItem = localStorage.getItems("cart");
 
   const handleSidebar = (e) => {
     e.stopPropagation();
@@ -63,8 +65,11 @@ const Navbar = () => {
         <div className="">
           <ul className="flex items-center">
             <NavLink to={"/cart"}>
-              <li className="inline-block px-1 text-xl mt-1 mx-2 max-sm:mx-0 uppercase">
+              <li className="inline-block px-1 text-xl mt-1 mx-2 max-sm:mx-0 uppercase relative ">
                 <IoCartOutline />
+                <span className="absolute -top-2 h-6 w-6 pb-2  text-sm text-center -right-3">
+                  {cartItem.length}
+                </span>
               </li>
             </NavLink>
             <NavLink to={"/order"}>
