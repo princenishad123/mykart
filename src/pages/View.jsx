@@ -37,14 +37,16 @@ const View = () => {
     });
   }, [id]);
 
-  const cartItems = useSelector((state) => state.cart);
-
   const addToCart = (product) => {
     dispatch(add(product));
-    toast.success("Added in Cart");
+    toast.success("Added in Cart", {
+      autoClose: 2000,
+    });
   };
+  const cartItems = useSelector((state) => state.cart);
+
   useEffect(() => {
-    // localStorage.setItem("cart", JSON.stringify(cartItems));
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
   return (
     <Layout title={category} description={"indias most popular shopping site"}>
@@ -86,7 +88,7 @@ const View = () => {
                     onClick={() => addToCart(product)}
                     className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
                   >
-                    Add to cart
+                    "add to cart"
                   </button>
                   <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
                     Buy Now
@@ -110,7 +112,7 @@ const View = () => {
                     onClick={() => addToCart(product)}
                     className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
                   >
-                    Add to cart
+                    add to cart
                   </button>
                   <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
                     Buy Now
