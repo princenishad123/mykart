@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import services from "../firebase/service";
 import SaleCard from "../components/Cards/SaleCard";
@@ -90,9 +90,12 @@ const View = () => {
                   >
                     "add to cart"
                   </button>
-                  <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
-                    Buy Now
-                  </button>
+
+                  <NavLink to={`/checkout/${product.id}`}>
+                    <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
+                      Buy Now
+                    </button>
+                  </NavLink>
                 </div>
                 {/* close info tag */}
                 <hr className="my-3" />
@@ -114,9 +117,11 @@ const View = () => {
                   >
                     add to cart
                   </button>
-                  <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
-                    Buy Now
-                  </button>
+                  <NavLink to={`/checkout/${product.id}`}>
+                    <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">
+                      Buy Now
+                    </button>
+                  </NavLink>
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { MdDeleteOutline } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +17,22 @@ const Cart = () => {
   };
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [deliveryCharge, setDeliveryCharge] = useState(49);
+
+  useEffect(() => {
+    let price = 0;
+    let ProductDiscount = 0;
+    cartItems.forEach((e) => {
+      price += parseInt(e.price);
+      ProductDiscount += parseInt(e.discount);
+    });
+
+    setTotalPrice(price);
+
+    setDiscount(ProductDiscount);
   }, [cartItems]);
   return (
     <Layout title={"my cart"} description={"cart"}>
@@ -71,12 +87,56 @@ const Cart = () => {
                 </div>
                 <div className="w-auto ">
                   <h2 className="text-2xl font-bold">₹ {e.price}</h2>
-                  <span className=" font-semibold">{e.discount} % off</span>
+                  <span className=" font-semibold text-green-500">
+                    {e.discount} % off
+                  </span>
                 </div>
               </div>
             ))}
           </div>
-          <div className="w-96 max-xl:w-80 bg-white border"></div>
+          <div className="w-96 max-sm:w-full max-xl:w-80 py-3 px-2 bg-white border">
+            <h2 className="text-xl font-semibold text-gray-600">
+              Price Details
+            </h2>
+            <hr className="my-3" />
+            <div className="flex justify-between py-2 font-semibold text-gray-500">
+              <h3>Price ({cartItems.length} items)</h3>
+              <div>₹{totalPrice}</div>
+            </div>
+            <div className="flex justify-between py-2 font-semibold text-gray-500">
+              <h3>Discount</h3>
+              <div className="text-green-500">
+                -₹{Math.floor((totalPrice * discount) / 100)}
+              </div>
+            </div>
+            <div className="flex justify-between py-2 font-semibold text-gray-500">
+              <h3>Delivery charges</h3>
+              <div className="text-green-500">
+                {totalPrice > 4000 ? "Free" : "₹ 49"}
+              </div>
+            </div>
+            <div className="flex justify-between border-t border-b py-2 font-semibold text-xl">
+              <h3 className=" font-semibold">Total Amount</h3>
+              <div className="text-green-500">
+                ₹{" "}
+                {totalPrice > 1000
+                  ? Math.floor(totalPrice - (totalPrice * discount) / 100)
+                  : Math.floor(totalPrice - (totalPrice * discount) / 100) +
+                    deliveryCharge}
+              </div>
+            </div>
+            <h2 className="my-2 text-md font-semibold text-green-500">
+              You will save ₹{Math.floor((totalPrice * discount) / 100)} on This
+              order
+            </h2>
+            <div>
+              <NavLink to={`/checkout/cartitems`}>
+                <button className="py-1 px-4 bg-red-400 rounded w-44 my-2 text-white">
+                  Check Out
+                </button>
+              </NavLink>
+            </div>
+          </div>
         </div>
       )}
     </Layout>

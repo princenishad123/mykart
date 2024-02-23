@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import services from "../firebase/service";
 import { useNavigate } from "react-router-dom";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -56,6 +58,19 @@ const Login = () => {
     }
   };
 
+  const [passwordIcon, setePasswordIcon] = useState(<IoEyeOffOutline />);
+  const [passwordType, setPasswordType] = useState("password");
+
+  function showPassword() {
+    if (passwordType == "password") {
+      setPasswordType("text");
+      setePasswordIcon(<MdOutlineRemoveRedEye />);
+    } else {
+      setPasswordType("password");
+      setePasswordIcon(<IoEyeOffOutline />);
+    }
+  }
+
   return (
     <Layout title={"login"} description={"Login in my account"}>
       <ToastContainer />
@@ -84,7 +99,7 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                   name="email"
-                  className="outline-none w-full rounded-md border py-1 px-2"
+                  className="outline-none w-full bg-gray-100 rounded-md border py-1 px-2"
                 />
               </div>
               <div className="w-72 max-lg:w-72 max-sm:w-full  my-3">
@@ -92,15 +107,23 @@ const Login = () => {
                   Password
                 </span>
                 <br />
-                <input
-                  autoComplete={"off"}
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  name="password"
-                  className="outline-none w-full rounded-md border py-1 px-2"
-                />
+                <div className="flex items-center w-full bg-gray-100 rounded-md border py-1 px-2">
+                  <input
+                    autoComplete={"off"}
+                    type={passwordType}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    name="password"
+                    className="outline-none w-full bg-transparent"
+                  />
+                  <span
+                    className="cursor-pointer text-gray-500 text-xl"
+                    onClick={showPassword}
+                  >
+                    {passwordIcon}
+                  </span>
+                </div>
               </div>
 
               <h2>

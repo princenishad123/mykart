@@ -3,6 +3,8 @@ import Layout from "../components/layout/Layout";
 import { ToastContainer, toast } from "react-toastify";
 import services from "../firebase/service";
 import { NavLink, useNavigate } from "react-router-dom";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 const SignUp = () => {
   const [signUpNewUser, setSignUpNewUser] = useState({
@@ -11,6 +13,7 @@ const SignUp = () => {
     password: "",
     conPassword: "",
   });
+  const [passwordType, setPasswordType] = useState("password");
   const [button, setButton] = useState("Sign Up");
   const navigate = useNavigate();
 
@@ -67,6 +70,17 @@ const SignUp = () => {
         });
     }
   };
+  const [passwordIcon, setePasswordIcon] = useState(<IoEyeOffOutline />);
+
+  function showPassword() {
+    if (passwordType == "password") {
+      setPasswordType("text");
+      setePasswordIcon(<MdOutlineRemoveRedEye />);
+    } else {
+      setPasswordType("password");
+      setePasswordIcon(<IoEyeOffOutline />);
+    }
+  }
 
   return (
     <div className="w-full h-screen grid place-items-center">
@@ -99,7 +113,7 @@ const SignUp = () => {
                   setSignUpNewUser({ ...signUpNewUser, name: e.target.value })
                 }
                 name="name"
-                className="outline-none w-full rounded-md border py-1 px-2"
+                className="outline-none w-full rounded-md border bg-gray-100 py-1 px-2"
               />
             </div>
             <div className="w-80 max-lg:w-72 max-sm:w-full  my-3">
@@ -113,44 +127,62 @@ const SignUp = () => {
                   setSignUpNewUser({ ...signUpNewUser, email: e.target.value })
                 }
                 name="email"
-                className="outline-none w-full rounded-md border py-1 px-2"
+                className="outline-none w-full rounded-md border py-1 px-2 bg-gray-100"
               />
             </div>
             <div className="w-80 max-lg:w-72 max-sm:w-full  my-3">
               <span className="ml-1 text-gray-600 font-semibold">Password</span>{" "}
               <br />
-              <input
-                type="password"
-                value={signUpNewUser.password}
-                onChange={(e) =>
-                  setSignUpNewUser({
-                    ...signUpNewUser,
-                    password: e.target.value,
-                  })
-                }
-                placeholder="Password"
-                name="password"
-                className="outline-none w-full rounded-md border py-1 px-2"
-              />
+              <div className="flex items-center w-full bg-gray-100 rounded-md border py-1 px-2">
+                <input
+                  type={passwordType}
+                  value={signUpNewUser.password}
+                  autoComplete="off"
+                  onChange={(e) =>
+                    setSignUpNewUser({
+                      ...signUpNewUser,
+                      password: e.target.value,
+                    })
+                  }
+                  placeholder="Password"
+                  name="password"
+                  className="outline-none w-full bg-transparent"
+                />
+
+                <span
+                  className="cursor-pointer text-gray-500 text-xl"
+                  onClick={showPassword}
+                >
+                  {passwordIcon}
+                </span>
+              </div>
             </div>
             <div className="w-80 max-lg:w-72 max-sm:w-full  my-3">
               <span className="ml-1 text-gray-600 font-semibold">
                 Confirm Password
               </span>{" "}
               <br />
-              <input
-                type="password"
-                placeholder="Password"
-                value={signUpNewUser.conPassword}
-                onChange={(e) =>
-                  setSignUpNewUser({
-                    ...signUpNewUser,
-                    conPassword: e.target.value,
-                  })
-                }
-                name="password"
-                className="outline-none w-full rounded-md border py-1 px-2"
-              />
+              <div className="flex items-center w-full bg-gray-100 rounded-md border py-1 px-2">
+                <input
+                  type={passwordType}
+                  placeholder="Password"
+                  value={signUpNewUser.conPassword}
+                  onChange={(e) =>
+                    setSignUpNewUser({
+                      ...signUpNewUser,
+                      conPassword: e.target.value,
+                    })
+                  }
+                  name="password"
+                  className="outline-none w-full bg-transparent"
+                />
+                <span
+                  className="cursor-pointer text-gray-500 text-xl"
+                  onClick={showPassword}
+                >
+                  {passwordIcon}
+                </span>
+              </div>
             </div>
             <div className="flex items-start gap-3">
               <input type="checkbox" name="term" className="mt-1" />
