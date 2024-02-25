@@ -88,7 +88,7 @@ const View = () => {
                     onClick={() => addToCart(product)}
                     className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
                   >
-                    "add to cart"
+                    Add to cart
                   </button>
 
                   <NavLink to={`/checkout/${product.id}`}>
@@ -115,7 +115,7 @@ const View = () => {
                     onClick={() => addToCart(product)}
                     className="py-1 px-6 rounded-md bg-gray-200 border border-gray-400 font-semibold shadow-xl shadow-gray-200 "
                   >
-                    add to cart
+                    Add to cart
                   </button>
                   <NavLink to={`/checkout/${product.id}`}>
                     <button className="py-1 px-6 rounded-md bg-red-500 shadow-lg shadow-red-200 text-white font-semibold">

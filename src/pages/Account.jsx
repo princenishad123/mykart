@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../components/layout/Layout";
 import { NavLink, Outlet } from "react-router-dom";
+import MyContext from "../context/MyContext";
+import services from "../firebase/service";
 
 const Account = () => {
+  const userid = JSON.parse(localStorage.getItem("user"));
+  const [userUid, setUserUid] = useState(userid?.uid);
+  const { userInformation, setUserInformation } = useContext(MyContext);
+  services.getUserData(userUid).then((res) => {
+    setUserInformation(res);
+  });
   return (
     <Layout title={"Account"} description={"my account"}>
       <div className="w-full  flex">

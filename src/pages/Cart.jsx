@@ -19,20 +19,17 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
+  const [discount, setDiscount] = useState(8);
   const [deliveryCharge, setDeliveryCharge] = useState(49);
 
   useEffect(() => {
     let price = 0;
-    let ProductDiscount = 0;
+
     cartItems.forEach((e) => {
       price += parseInt(e.price);
-      ProductDiscount += parseInt(e.discount);
     });
 
     setTotalPrice(price);
-
-    setDiscount(ProductDiscount);
   }, [cartItems]);
   return (
     <Layout title={"my cart"} description={"cart"}>
@@ -94,7 +91,7 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="w-96 max-sm:w-full max-xl:w-80 py-3 px-2 bg-white border">
+          <div className="w-96 max-sm:w-full h-auto max-xl:w-80 py-3 px-2 bg-white border">
             <h2 className="text-xl font-semibold text-gray-600">
               Price Details
             </h2>

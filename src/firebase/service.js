@@ -50,6 +50,20 @@ class service {
     }
   }
 
+  //set order information
+  async uploadOrders(orderInfo) {
+    let id = uuidv4();
+    try {
+      await setDoc(doc(database, "orders", id), {
+        id: id,
+        orderInfo,
+      });
+      return "order success";
+    } catch (error) {
+      return error.code;
+    }
+  }
+
   //delete doc
   async deleteDoc(id) {
     let res = await deleteDoc(doc(database, "products", id));
