@@ -47,8 +47,8 @@ const Checkout = () => {
       return toast.error("Address is mendatry");
     }
     var options = {
-      key: "rzp_test_urfqybERCeqBvu",
-      key_secret: "J7RHVfOuPirl8YRnizdUuBPO",
+      key: import.meta.env.VITE_RAZOR_PAY_KEY,
+      key_secret: import.meta.env.VITE_RAZOR_SCRETE_KEY,
       amount: parseInt(
         (totalPrice > 1000
           ? Math.floor(totalPrice - (totalPrice * discount) / 100)
