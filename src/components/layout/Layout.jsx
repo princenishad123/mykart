@@ -20,7 +20,7 @@ const Layout = ({
         <meta name="author" content={author} />
       </Helmet>
       <Navbar />
-      <ToastContainer />
+      <ToastContainer autoClose={1000} />
       <main className="w-full bg-white" style={{ minHeight: "80vh" }}>
         {children}
       </main>

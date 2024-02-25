@@ -40,7 +40,7 @@ const View = () => {
   const addToCart = (product) => {
     dispatch(add(product));
     toast.success("Added in Cart", {
-      autoClose: 2000,
+      position: "top-center",
     });
   };
   const cartItems = useSelector((state) => state.cart);

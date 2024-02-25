@@ -28,8 +28,7 @@ const SignUp = () => {
     ) {
       toast.error("All Field is Required", {
         theme: "colored",
-        position: "top-right",
-        autoClose: 3000,
+        position: "top-center",
       });
     } else if (signUpNewUser.password != signUpNewUser.conPassword) {
       toast.error("Password don't Match", {
@@ -44,22 +43,19 @@ const SignUp = () => {
         .then((res) => {
           if (res == "auth/email-already-in-use") {
             toast.error("Email is already use", {
-              position: "top-right",
-              autoClose: 3000,
+              position: "top-center",
             });
 
             // navigate("/login");
             setButton("Sign up");
           } else if (res == "auth/network-request-failed") {
             toast.error("No internet connection", {
-              position: "top-right",
-              autoClose: 3000,
+              position: "top-center",
             });
             setButton("Sign up");
           } else {
             toast.success("Account is created", {
-              position: "top-right",
-              autoClose: 3000,
+              position: "top-center",
             });
             navigate("/login");
             setButton("Sign up");
@@ -84,8 +80,6 @@ const SignUp = () => {
 
   return (
     <div className="w-full h-screen grid place-items-center">
-      <ToastContainer />
-
       <div className="w-4/5 max-lg:w-11/12 rounded-md overflow-hidden md:shadow-xl border flex items-center max-sm:px-4 bg-slate-50 max-md:justify-center">
         <div className="w-1/2 max-md:hidden bg-red-400 grid place-items-center py-14">
           <img

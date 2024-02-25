@@ -11,6 +11,7 @@ import MyContext from "../../context/MyContext";
 const Dashboard = () => {
   const { allUsers, setAllUsers } = useContext(MyContext);
   const { allProducts, setAllProducts } = useContext(MyContext);
+  const { ordersData, setOrdersData } = useContext(MyContext);
 
   return (
     <div>
@@ -27,7 +28,7 @@ const Dashboard = () => {
         <StatusCard
           link={"orders"}
           type={"Orders"}
-          value={80}
+          value={ordersData?.length}
           iconBg={"bg-purple-100"}
           textColor={"text-purple-600"}
           icon={<PiShoppingCartSimpleLight />}

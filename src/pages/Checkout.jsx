@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -15,6 +15,8 @@ const Checkout = () => {
   const [discount, setDiscount] = useState(8);
   const [deliveryCharge, setDeliveryCharge] = useState(49);
   const { userInformation, setUserInformation } = useContext(MyContext);
+  // const [status, setStatus] = "pending";
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (product == "cartitems") {
@@ -44,7 +46,9 @@ const Checkout = () => {
       !userInformation.city ||
       !userInformation.village_landmark
     ) {
-      return toast.error("Address is mendatry");
+      return toast.error("Address is mendatry", {
+        position: "top-center",
+      });
     }
     var options = {
       key: import.meta.env.VITE_RAZOR_PAY_KEY,
@@ -73,21 +77,23 @@ const Checkout = () => {
           alternatePhone: userInformation.alternatePhone,
           city: userInformation.city,
           state: userInformation.state,
-          userId: userInformation.userId,
           office_house_no: userInformation.office_house_no,
           village_landmark: userInformation.village_landmark,
-          status: "Pending",
+
           date: new Date().toLocaleString("en-US", {
             month: "short",
             day: "2-digit",
             year: "numeric",
           }),
+
           paymentId,
         };
         try {
-          services.uploadOrders(orderInfo).then((res) => {
-            console.log(`services ${res}`);
-          });
+          services
+            .uploadOrders(orderInfo, userInformation.userId)
+            .then((res) => {
+              navigate("/order");
+            });
         } catch (error) {
           console.log(error);
         }
@@ -192,7 +198,7 @@ const Checkout = () => {
                   onClick={buyNow}
                   className="py-1 px-4 bg-purple-500 shadow-md shadow-purple-100 rounded w-44 my-2 text-white"
                 >
-                  Check Out
+                  Purchase Now
                 </button>
               </NavLink>
             </div>

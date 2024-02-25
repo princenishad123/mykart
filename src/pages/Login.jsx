@@ -20,8 +20,7 @@ const Login = () => {
     if (!email || !password) {
       toast.error("All Field is Required", {
         theme: "colored",
-        position: "top-right",
-        autoClose: 3000,
+        position: "top-center",
       });
     } else {
       setButton("Loading...");
@@ -30,8 +29,7 @@ const Login = () => {
         .then((res) => {
           toast.success("You are Logged In", {
             theme: "colored",
-            position: "top-right",
-            autoClose: 3000,
+            position: "top-center",
           });
 
           setButton("Login");
@@ -43,14 +41,12 @@ const Login = () => {
           if (err.code == "auth/network-request-failed") {
             toast.error("No internet connection", {
               theme: "colored",
-              position: "top-right",
-              autoClose: 3000,
+              position: "top-center",
             });
           } else if (err.code == "auth/invalid-credential") {
             toast.error("Invalid email or password", {
               theme: "colored",
-              position: "top-right",
-              autoClose: 3000,
+              position: "top-center",
             });
           }
           setButton("Login");
@@ -73,7 +69,6 @@ const Login = () => {
 
   return (
     <Layout title={"login"} description={"Login in my account"}>
-      <ToastContainer />
       <div className="w-full h-full grid place-items-center my-8">
         <div className="w-3/5 max-lg:w-11/12 rounded-md overflow-hidden md:shadow-xl border flex items-center max-sm:px-4 bg-slate-50 max-md:justify-center">
           <div className="w-1/2 max-md:hidden bg-red-400 grid place-items-center py-10">

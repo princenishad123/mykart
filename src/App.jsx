@@ -36,6 +36,7 @@ import Orders from "./pages/AdminPages/Orders";
 import Upload from "./pages/AdminPages/Upload";
 import Update from "./pages/AdminPages/Update";
 import Checkout from "./pages/Checkout";
+import OrderDetails from "./pages/OrderDetails";
 
 const App = () => {
   AOS.init({
@@ -82,6 +83,10 @@ const App = () => {
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/offer-zone" element={<Offers />} />
       <Route path="/cart" element={<ProtectedRoutes Component={Cart} />} />
+      <Route
+        path="/order-details/:id"
+        element={<ProtectedRoutes Component={OrderDetails} />}
+      />
       <Route path="/help" element={<HelpCenter />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/*" element={<NoPage />} />

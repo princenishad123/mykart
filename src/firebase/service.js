@@ -50,12 +50,14 @@ class service {
     }
   }
 
-  //set order information
-  async uploadOrders(orderInfo) {
+  //upload  order information
+  async uploadOrders(orderInfo, userId) {
     let id = uuidv4();
     try {
       await setDoc(doc(database, "orders", id), {
         id: id,
+        userId: userId,
+        status: "pending",
         orderInfo,
       });
       return "order success";
@@ -173,6 +175,18 @@ class service {
     }
   }
 
+  // update order status
+  async updateOrderStatus({ status, orderId }) {
+    try {
+      await updateDoc(doc(database, "orders", orderId), {
+        status: status,
+      });
+      return "success";
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // get limit data for home page
   async homeData() {
     try {
@@ -193,6 +207,18 @@ class service {
       const q = query(categories, where("category", "==", category));
       let catData = await getDocs(q);
       return catData;
+    } catch (error) {
+      console.log(`something error in service.js${error.message}`);
+    }
+  }
+
+  //get user orders data
+  async getUserOrders(userId) {
+    try {
+      const categories = collection(database, "orders");
+      const q = query(categories, where("userId", "==", userId));
+      let orders = await getDocs(q);
+      return orders;
     } catch (error) {
       console.log(`something error in service.js${error.message}`);
     }

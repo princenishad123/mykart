@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dropdown } from "keep-react";
-const OrderStatusHandler = () => {
+import { useDispatch } from "react-redux";
+import { changeStatus } from "../../store/OrderStatusSlice";
+import MyContext from "../../context/MyContext";
+const OrderStatusHandler = ({ orderId, status }) => {
+  const dispatch = useDispatch();
+
+  function Orderstatus(e) {
+    let status = e.target.innerHTML;
+    let statusData = {
+      status: status,
+      orderId: orderId,
+    };
+    dispatch(changeStatus(statusData));
+  }
   return (
     <div className="w-20 rounded-md ">
       <Dropdown
-        label="Status"
+        label={status}
         size="sm"
         arrowIcon={false}
         type=""
         dismissOnClick={true}
         className="bg-green-100 h-7"
       >
-        <Dropdown.Item>Pending</Dropdown.Item>
-        <Dropdown.Item>Confirm Order</Dropdown.Item>
-        <Dropdown.Item>Shipped</Dropdown.Item>
-        <Dropdown.Item>Out for delivery</Dropdown.Item>
-        <Dropdown.Item>Delivered</Dropdown.Item>
+        <Dropdown.Item>
+          <button onClick={Orderstatus}>pending</button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <button onClick={Orderstatus}>confirm order</button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <button onClick={Orderstatus}>shipped</button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <button onClick={Orderstatus}>out for delivery</button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          {" "}
+          <button onClick={Orderstatus}>deliverd</button>
+        </Dropdown.Item>
       </Dropdown>
     </div>
   );

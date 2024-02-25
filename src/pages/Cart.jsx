@@ -12,7 +12,7 @@ const Cart = () => {
   const remove = (id) => {
     dispatch(removeCartItem(id));
     toast.success("Removed Item", {
-      autoClose: 1200,
+      position: "top-center",
     });
   };
   useEffect(() => {

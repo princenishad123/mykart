@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import OrdersData from "../../components/AdminComponents/OrdersData";
+import MyContext from "../../context/MyContext";
 
 const Orders = () => {
+  const { ordersData, setOrdersData } = useContext(MyContext);
+
   return (
     <div>
       <div
@@ -18,16 +21,25 @@ const Orders = () => {
               <th className="text-start px-3 py-2">Product Name</th>
               <th className="text-start px-3 w-16 py-2">OTY</th>
               <th className="text-start px-3 w-24 py-2">Price</th>
-              <th className="text-start px-3 w-24 py-2">Status</th>
-              <th className="text-start px-3 w-44 py-2">Address</th>
+              <th className="text-start px-3 w-44 py-2">Status</th>
             </tr>
           </thead>
 
           <tbody className="text-start text-gray-500">
-            <OrdersData />
-            <OrdersData />
-            <OrdersData />
-            <OrdersData />
+            {ordersData.map((orders) =>
+              orders.orderInfo.purchaseItem.map((doc, index) => (
+                <OrdersData
+                  key={index}
+                  image={doc.image}
+                  orderId={orders.id}
+                  name={orders.orderInfo.name}
+                  productName={doc.title}
+                  qyt={1}
+                  price={doc.price}
+                  status={orders.status}
+                />
+              ))
+            )}
           </tbody>
         </table>
       </div>
