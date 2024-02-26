@@ -15,7 +15,10 @@ const DeleteConfirmation = ({ id }) => {
   const deleteDoc = () => {
     services.deleteDoc(id).then((res) => {
       onClickErrorModal();
-      toast.success("Product Delete");
+      toast.success("Product Delete", {
+        position: "top-center",
+        autoClose: 1000,
+      });
     });
   };
 

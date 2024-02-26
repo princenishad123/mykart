@@ -105,8 +105,12 @@ const View = () => {
                   <p>{product.description}</p>
                 </div>
                 <hr className="my-3" />
-                <div className="size-max px-3 py-1 rounded-sm text-white font-semibold bg-green-600 origin-center skew-x-3">
-                  <h2>1,000+ People Ordered in this week</h2>
+                <div className="size-max px-3 max-sm:w-11/12 w-[300px] h-8 py-1 rounded-sm text-white font-semibold bg-green-600 overflow-hidden origin-center skew-x-3 relative">
+                  <div className="h-full 0  bgAnimation top-0 w-0 bg-red"></div>
+
+                  <div className="absolute top-1">
+                    <h2 className="">1,000+ People Ordered in this week</h2>
+                  </div>
                 </div>
                 {/*buttons for md screens */}
 
@@ -128,7 +132,7 @@ const View = () => {
           </div>
 
           <hr className="my-3" />
-          <div className="w-11/12  mx-auto flex items-center justify-center gap-4 flex-wrap ">
+          <div className="w-11/12 max-sm:w-full max-sm:gap-0  mx-auto flex items-center justify-center gap-4 flex-wrap ">
             {suggetion.map((e) => (
               <SaleCard
                 image={e.image}

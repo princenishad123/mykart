@@ -78,7 +78,7 @@ const Products = () => {
                 <td className=" py-2 px-3 truncate">1961</td>
                 <td className=" py-2 px-3 w-32 truncate flex items-center gap-2">
                   <DeleteConfirmation id={e.id} />
-                  <NavLink to={""}>
+                  <NavLink to={"update"}>
                     <button className="h-8 grid place-items-center text-xl w-8 bg-green-100 text-green-600 rounded-md">
                       <CiEdit />
                     </button>

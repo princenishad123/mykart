@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StatusCard from "../../components/AdminComponents/StatusCard";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
@@ -12,6 +12,24 @@ const Dashboard = () => {
   const { allUsers, setAllUsers } = useContext(MyContext);
   const { allProducts, setAllProducts } = useContext(MyContext);
   const { ordersData, setOrdersData } = useContext(MyContext);
+  const [earning, setEarning] = useState(0);
+
+  useEffect(() => {
+    setEarning(0);
+    let earn = 0;
+    let a = ordersData.filter((e) => {
+      if (e.status == "delivered") {
+        return e;
+      }
+    });
+
+    a.map((price) =>
+      price.orderInfo.purchaseItem.map((rs) => {
+        earn = earn + rs.price;
+      })
+    );
+    setEarning(earn);
+  }, [ordersData]);
 
   return (
     <div>
@@ -43,7 +61,7 @@ const Dashboard = () => {
         />
         <StatusCard
           type={"Earning"}
-          value={200}
+          value={earning}
           iconBg={"bg-pink-100"}
           textColor={"text-pink-600"}
           icon={<TbCoinRupee />}

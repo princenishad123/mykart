@@ -19,7 +19,7 @@ const ProductCard = ({ image, title, discount, category }) => {
           <span className="font-semibold text-md text-green-500">
             {discount}% OFF
           </span>
-          <h2>{title}</h2>
+          <h2 className="truncate">{title}</h2>
         </div>
       </div>
     </NavLink>

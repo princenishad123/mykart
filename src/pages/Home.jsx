@@ -78,10 +78,10 @@ const Home = () => {
 
           {/* sale card */}
           <div>
-            <h1 className="text-xl font-semibold px-3 my-6 text-center ">
+            <h1 className="text-xl font-semibold px-3 my-6 text-start ">
               Trending Clothes
             </h1>
-            <div className="w-11/12  mx-auto flex items-center justify-center gap-4 flex-wrap ">
+            <div className="w-11/12 max-md:w-full border-b max-sm:gap-0 mx-auto flex items-center justify-center gap-3 flex-wrap ">
               {item.slice(6, -1).map((e) => (
                 <SaleCard
                   image={e.image}

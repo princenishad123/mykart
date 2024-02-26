@@ -28,17 +28,19 @@ const OrderStatusHandler = ({ orderId, status }) => {
           <button onClick={Orderstatus}>pending</button>
         </Dropdown.Item>
         <Dropdown.Item>
-          <button onClick={Orderstatus}>confirm order</button>
+          <button onClick={Orderstatus}>order confirmed</button>
         </Dropdown.Item>
+
         <Dropdown.Item>
           <button onClick={Orderstatus}>shipped</button>
         </Dropdown.Item>
+
         <Dropdown.Item>
           <button onClick={Orderstatus}>out for delivery</button>
         </Dropdown.Item>
         <Dropdown.Item>
           {" "}
-          <button onClick={Orderstatus}>deliverd</button>
+          <button onClick={Orderstatus}>delivered</button>
         </Dropdown.Item>
       </Dropdown>
     </div>

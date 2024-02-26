@@ -192,7 +192,7 @@ class service {
     try {
       // let databaseRef = "";
       let productRef = collection(database, "products");
-      const q = query(productRef, orderBy("title"), limit(11));
+      const q = query(productRef, orderBy("title"), limit(12));
       const querySnapShot = await getDocs(q);
       return querySnapShot;
     } catch (error) {

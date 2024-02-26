@@ -14,7 +14,7 @@ const Users = () => {
           <thead>
             <tr className="border-b  text-center ">
               <th className="text-start px-3 py-2 w-16">Image</th>
-              <th className="text-start px-3  py-2">Id</th>
+              <th className="text-start px-3  py-2">User Id</th>
               <th className="text-start px-3 py-2">Name</th>
               <th className="text-start px-3 py-2">Email</th>
               <th className="text-start px-3 py-2">Phone</th>
@@ -26,10 +26,12 @@ const Users = () => {
             {allUsers.map((e) => (
               <tr
                 key={e.userId}
-                className="border-b cursor-pointer hover:bg-slate-50"
+                className="border-b cursor-pointer py-2 hover:bg-slate-50"
               >
                 <td className="">
-                  <div className="w-12 h-12 rounded-full border"></div>
+                  <div className="w-12 text-2xl h-12 rounded-full bg-red-400 text-white grid place-items-center border">
+                    {e.username[0]}
+                  </div>
                 </td>
                 <td className=" truncate">{e.userId}</td>
                 <td className=" py-2 px-3 truncate">{e.username}</td>
