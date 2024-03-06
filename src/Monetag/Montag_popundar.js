@@ -1,48 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="monetag" content="bd61db016c18d0d62ebd47a4d77aaacf" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-  </head>
-  <body>
-    <div id="root"></div>
 
-    <script type="module" src="/src/main.jsx"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-    <!-- papundar ad -->
-    <!-- <script data-cfasync="false" type="text/javascript"></script>
-    <script>
-      (function (d, z, x, s, e, o) {
-        s.src = "//" + d + "/tag.min.js";
-        x.withCredentials = true;
-        x.open("GET", "//" + d + "/5/" + z + "/?oo=1&aab=1", !0);
-        s.onerror = x.onerror = E;
-        s.onload = x.onload = g;
-        x.send();
-        (document.body || document.documentElement).appendChild(s);
-        function g() {
-          o = this.response ? JSON.parse(this.response) : o;
-          o && window.kkp4a5x5tv && window.kkp4a5x5tv(o);
-        }
-        function E() {
-          e && e();
-          e = null;
-        }
-      })(
-        "sheegiwo.com",
-        7182005,
-        new XMLHttpRequest(),
-        document.createElement("script"),
-        _htqpa
-      );
-    </script> -->
-
-    <!-- in page push  -->
-    <script data-cfasync="false" type="text/javascript">
       (function ($, document) {
         for ($._Fj = $.BD; $._Fj < $.Fu; $._Fj += $.x) {
           switch ($._Fj) {
@@ -260,29 +216,29 @@
                   for ($._h = $.BD; $._h < $.Cg; $._h += $.x) {
                     switch ($._h) {
                       case $.CC:
-                        (t.e = 7182413),
-                          (t.a = 7182412),
-                          (t.v = 0),
-                          (t.w = 0),
-                          (t.h = 30),
+                        (t.e = 7182006),
+                          (t.a = 7182005),
+                          (t.v = 360),
+                          (t.w = 1),
+                          (t.h = 10),
                           (t.y = 3),
                           (t._ = true),
                           (t.g = g[$.ac](
                             b("eyJhZGJsb2NrIjp7fSwiZXhjbHVkZXMiOiIifQ==")
                           )),
-                          (t.O = 2),
-                          (t.k = "Ly9mb29tYXF1ZS5uZXQvNDAwLzcxODI0MTM="),
-                          (t.S = "Zm9vbWFxdWUubmV0"),
+                          (t.O = 1),
+                          (t.k = "Ly9zaGVlZ2l3by5jb20vNS83MTgyMDA2"),
+                          (t.S = "c2hlZWdpd28uY29t"),
                           (t.A = 2),
-                          (t.P = $.It * 1709705799),
+                          (t.P = $.It * 1709698699),
                           (t.M = "Zez$#t^*EFng"),
-                          (t.T = "3rm"),
-                          (t.B = "6tntmh20o2k"),
-                          (t.N = "zdy7etzr"),
-                          (t.I = "yda"),
-                          (t.C = "lnlrvy49drf"),
-                          (t.z = "_mimnbh"),
-                          (t.R = "_qvpow"),
+                          (t.T = "3r7"),
+                          (t.B = "6t8ofnxt0t4"),
+                          (t.N = "wuthrfzg"),
+                          (t.I = "vwc"),
+                          (t.C = "7ggvan4yhne"),
+                          (t.z = "_htqpa"),
+                          (t.R = "_felfvvw"),
                           (t.D = false);
                         break;
                       case $.x:
@@ -5630,28 +5586,3 @@
           return _;
         })(document)
       );
-    </script>
-    <script>
-      (function (d, z, s, c) {
-        s.src = "//" + d + "/400/" + z;
-        s.onerror = s.onload = E;
-        function E() {
-          c && c();
-          c = null;
-        }
-        try {
-          (document.body || document.documentElement).appendChild(s);
-        } catch (e) {
-          E();
-        }
-      })("foomaque.net", 7182412, document.createElement("script"), _mimnbh);
-    </script>
-
-    <!-- intertial ad -->
-    <script
-      async="async"
-      data-cfasync="false"
-      src="//thubanoa.com/1?z=7182424"
-    ></script>
-  </body>
-</html>
