@@ -34,23 +34,22 @@ const Footer = () => {
         <section>
           <h1 className="text-xl font-semibold py-4">Policy</h1>
           <ul>
-            <NavLink>
+            <NavLink to={"/refund-and-cancellation"}>
               <li>Refund & cancellation</li>
             </NavLink>
 
-            <NavLink>
+            <NavLink to={"/privacy-and-policy"}>
               <li>Privacy Policy</li>
             </NavLink>
 
-            <NavLink>
-              <li>Emails</li>
+            <NavLink to={"/terms-and-conditions"}>
+              <li>Terms & Conditions</li>
             </NavLink>
-            <NavLink>
-              <li>+91 9936752250</li>
+
+            <NavLink to={'/shipping-policy'}>
+              <li>Shipping policy</li>
             </NavLink>
-            <NavLink>
-              <li>Location</li>
-            </NavLink>
+            
           </ul>
         </section>
         <section className="max-md:hidden">

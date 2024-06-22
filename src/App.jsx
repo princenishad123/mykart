@@ -37,6 +37,10 @@ import Upload from "./pages/AdminPages/Upload";
 import Update from "./pages/AdminPages/Update";
 import Checkout from "./pages/Checkout";
 import OrderDetails from "./pages/OrderDetails";
+import TermAndCon from "./pages/TermAndCon";
+import RefundAndCans from "./pages/RefundAndCans";
+import ShippingAndDelivery from "./pages/ShippingAndDelivery";
+import PrivacyAndPolicy from "./pages/PrivacyAndPolicy";
 
 const App = () => {
   AOS.init({
@@ -90,6 +94,11 @@ const App = () => {
       <Route path="/help" element={<HelpCenter />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/*" element={<NoPage />} />
+      <Route path="/terms-and-conditions" element={<TermAndCon />} />
+      <Route path="/refund-and-cancellation" element={<RefundAndCans />} />
+      <Route path="/shipping-policy" element={<ShippingAndDelivery />} />
+      <Route path="/privacy-and-policy" element={<PrivacyAndPolicy />} />
+
     </Routes>
   );
 };
