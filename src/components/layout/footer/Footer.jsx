@@ -14,13 +14,13 @@ const Footer = () => {
         <section>
           <h1 className="text-xl font-semibold py-4">Quick Links</h1>
           <ul>
-            <NavLink>
+            <NavLink to={"/"}>
               <li>Home</li>
             </NavLink>
-            <NavLink>
+            <NavLink to={"/about-us"}>
               <li>About us</li>
             </NavLink>
-            <NavLink>
+            <NavLink to={"/contact-us"}>
               <li>Contact us</li>
             </NavLink>
             <NavLink>

@@ -41,6 +41,7 @@ import TermAndCon from "./pages/TermAndCon";
 import RefundAndCans from "./pages/RefundAndCans";
 import ShippingAndDelivery from "./pages/ShippingAndDelivery";
 import PrivacyAndPolicy from "./pages/PrivacyAndPolicy";
+import ContactUs from "./pages/ContactUs";
 
 const App = () => {
   AOS.init({
@@ -91,7 +92,8 @@ const App = () => {
         path="/order-details/:id"
         element={<ProtectedRoutes Component={OrderDetails} />}
       />
-      <Route path="/help" element={<HelpCenter />} />
+      <Route path="/contact-us" element={<HelpCenter />} />
+      <Route path="/about-us" element={<ContactUs />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/*" element={<NoPage />} />
       <Route path="/terms-and-conditions" element={<TermAndCon />} />
