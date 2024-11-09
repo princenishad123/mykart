@@ -9,12 +9,6 @@ const BrowseByCategory = () => {
           <h1 className="text-3xl max-md:text-2xl max-sm:text-xl my-2 font-semibold">
             Enhance Your <br /> Shopping Experience
           </h1>
-
-          <a href="producSection">
-            <button className="py-1 my-3 px-3 rounded-md bg-red-400 text-white">
-              Order Now
-            </button>
-          </a>
         </div>
         <div className="">
           <img

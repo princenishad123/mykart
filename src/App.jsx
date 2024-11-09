@@ -68,6 +68,7 @@ const App = () => {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/order" element={<ProtectedRoutes Component={Order} />} />
+      <Route path="/cart" element={<Cart />} />
       <Route
         path="/checkout/:product"
         element={<ProtectedRoutes Component={Checkout} />}
@@ -87,7 +88,6 @@ const App = () => {
       <Route path="/view/:id" element={<View />} />
       <Route path="/coupons" element={<Coupons />} />
       <Route path="/offer-zone" element={<Offers />} />
-      <Route path="/cart" element={<ProtectedRoutes Component={Cart} />} />
       <Route
         path="/order-details/:id"
         element={<ProtectedRoutes Component={OrderDetails} />}
@@ -100,7 +100,6 @@ const App = () => {
       <Route path="/refund-and-cancellation" element={<RefundAndCans />} />
       <Route path="/shipping-policy" element={<ShippingAndDelivery />} />
       <Route path="/privacy-and-policy" element={<PrivacyAndPolicy />} />
-
     </Routes>
   );
 };
