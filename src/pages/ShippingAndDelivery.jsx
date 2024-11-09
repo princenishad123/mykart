@@ -96,10 +96,16 @@ If you have any questions or concerns regarding our shipping and delivery policy
     Phone : +1-800-800-0000
 
     </li>
+     <li>
+              Address : Uttar Pradesh, Kathkuiyan, katya , <br /> Pin Code :
+              274303 <br /> distric : Kushinagar
+            </li>
+  
     <li>
     Hours: Monday to Friday, 9 AM - 5 PM (EST)
 
     </li>
+  
 </ul>
 
 Thank you for choosing eShopsy. We appreciate your business and look forward to serving you!
